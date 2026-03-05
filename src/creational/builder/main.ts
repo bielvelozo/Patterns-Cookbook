@@ -1,11 +1,18 @@
-import { FoodBox } from "./classes/food-box";
-import { Sunomono, Sushi, Temaki } from "./classes/foods";
+import { MainDishBuilder } from "./classes/main-dish-builder";
 
-const sonomono = new Sunomono("Sonomono", 24);
-const sushi = new Sushi("Sushi", 32);
-const temaki = new Temaki("Temaki", 28);
+const mainDishBuilder = new MainDishBuilder();
+mainDishBuilder.makeMeal().makeBeverage().makeDessert();
 
-const foodBox = new FoodBox();
-foodBox.add(sonomono, sushi, temaki);
+console.log(mainDishBuilder.getMeal());
+console.log(mainDishBuilder.getPrice());
 
-console.log(foodBox);
+mainDishBuilder.reset();
+
+const meal2 = mainDishBuilder.makeMeal().makeBeverage().getMeal();
+console.log(meal2);
+
+const veganDishBuilder = new MainDishBuilder();
+veganDishBuilder.makeMeal().makeBeverage().makeDessert();
+
+console.log(veganDishBuilder.getMeal());
+console.log(veganDishBuilder.getPrice());
